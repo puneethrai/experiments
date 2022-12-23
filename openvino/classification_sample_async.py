@@ -83,7 +83,7 @@ def print_performance_report():
     print(f"Loaded model to {args.device} in {load_end_time-load_start_time:.2f} seconds.")
     print(f"Total time for {counter} frames: {duration:.2f} seconds, fps:{fps:.2f}")
     Path(args.performance).mkdir(parents=True, exist_ok=True)
-    f = open(f'{args.performance}/performance.txt', 'w')
+    f = open(f'{args.performance}/FP16/performance.txt', 'w')
     f.write(f'Throughput: {fps:.2f} FPS\nLatency: {duration:.2f} s')
     f.close()
 
