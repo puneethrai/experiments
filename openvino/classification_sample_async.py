@@ -80,9 +80,10 @@ def print_performance_report():
     duration = end_time - start_time
     fps = images_len / duration
     args = parse_args()
-    output_path = f'{args.performance}/FP16/'
-    print(f"Loaded model to {args.device} in {load_end_time-load_start_time:.2f} seconds.")
-    print(f"Total time for {counter} frames: {duration:.2f} seconds, fps:{fps:.2f}")
+    # Recommended to place performance.txt file to be placed inside FP32 (which ever precision has been used) folder
+    output_path = f'{args.performance}/FP32/'
+    log.info(f"Loaded model to {args.device} in {load_end_time-load_start_time:.2f} seconds.")
+    log.info(f"Total time for {counter} frames: {duration:.2f} seconds, fps:{fps:.2f}")
     Path(output_path).mkdir(parents=True, exist_ok=True)
     f = open(f'{output_path}/performance.txt', 'w')
     f.write(f'Throughput: {fps:.2f} FPS\nLatency: {duration:.2f} s')
